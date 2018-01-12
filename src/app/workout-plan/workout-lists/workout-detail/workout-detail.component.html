@@ -1,0 +1,13 @@
+<h3><i>Workout Name: </i>{{workout.name}} <i (click) = "onRemoveWorkoutList()" class="fa fa-trash-o" aria-hidden="true" style="cursor: pointer;"></i></h3>
+<hr>
+<div class="row">
+	<div class="col-xs-12">
+		<div *ngFor ="let exercise of workout.exercises; let i = index ">
+			<ul>
+				<li>
+					<p>{{i+1}}. <i>{{exercise.name}}</i> <b>{{exercise.series}}x{{exercise.repetition}}</b></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

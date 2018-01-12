@@ -1,0 +1,69 @@
+<div class="row">
+	<div class="col-xs-12" *ngIf="exercises">
+		<h3>Exercises List</h3>
+		<hr>
+		<app-exercises-item
+			*ngFor="let exercise of exercises; let i = index"
+			[exercise]="exercise"
+			[index]= "i">
+		</app-exercises-item>
+	</div>
+	<div class="col-xs-12" *ngIf="exercises.length === 0">
+		<p class="text-center bold empty"> Please add exercises if you want to preview them </p>
+	</div>
+	<div class="col-xs-12">
+		<accordion>
+			<accordion-group #group>
+				<div accordion-heading class="accordion-title">
+					<h4 class="bold">Add new Exercise to this category</h4>
+					<span class="float-right pull-right add-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 add-exercise">
+						<form (ngSubmit)="onAddNewExercise(f)" #f="ngForm">
+							<div class="form-group">
+								<label for="name">Name</label>
+								<input
+									ngModel
+									#name = "ngModel"
+									class="form-control"
+									name="name"
+									id="name"
+									type="text"
+									required>
+								<span class="small-warning" *ngIf="!name.valid && name.touched">Please enter a exercise name!</span>
+							</div>
+							<div class="form-group">
+								<label for="imgUrl">Image URL</label>
+								<input
+									ngModel
+									class="form-control"
+									name="imgUrl"
+									id="imgUrl"
+									type="text">
+							</div>
+							<div class="form-group">
+								<label for="desc">Description</label>
+								<textarea
+									ngModel
+									#desc = "ngModel"
+									rows="4"
+									cols="50"
+									class="form-control"
+									name="description"
+									id="desc"
+									type="text"
+									required>
+								</textarea>
+								<span class="small-warning" *ngIf="!desc.valid && desc.touched">Please enter a exercise description!</span>
+							</div>
+							<div class="submit">
+								<button class="btn btn-success" [disabled] = "!f.valid" type="submit"> Add Exercise </button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</accordion-group>
+		</accordion>
+	</div>
+</div>

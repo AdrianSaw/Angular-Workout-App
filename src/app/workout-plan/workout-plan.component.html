@@ -1,0 +1,79 @@
+<div class="row workout">
+	<div class="col-xs-12">
+		<h3>Workout List draft</h3>
+		<hr>
+		<div *ngIf="exercises.length !== 0">
+			<form (ngSubmit) = "addNewWorkoutList(f)" #f="ngForm">
+				<div class="form-group">
+					<label for="name">Workout List Name</label>
+					<input
+						ngModel
+						#name = "ngModel"
+						class="form-control"
+						name="name"
+						id="name"
+						type="text"
+						required
+						minlength="3">
+					<span class="small-warning" *ngIf="!name.valid && name.touched">Please enter a name for your list!</span>
+				</div>
+				<h4>Exercises List</h4>
+				<hr>
+				<div *ngFor="let exercise of exercises; let i = index" class="row workout-list">
+					<div class="col-xs-12 col-sm-6">
+						<p>{{i+1}}.{{ exercise.name }} <b>({{exercise.category}})</b></p>
+					</div>
+					<div class="col-xs-4 col-sm-2">
+						<div class="form-group">
+							<label for="series">series</label>
+							<input
+								#series= "ngModel"
+								(ngModel) = "'series' + i"
+								class="form-control"
+								name="series{{i}}"
+								id="series{{i}}"
+								type="number"
+								(keyup) = "addSeriesAndReps(exercise, series)"
+								required>
+							<span class="small-warning" *ngIf="!series.valid && series.touched">Please enter a series value!</span>
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-2">
+						<div class="form-group">
+							<label for="repetition">repetition</label>
+							<input
+								#repetition = "ngModel"
+								(ngModel) = "'repetition' + i"
+								class="form-control"
+								name="repetition{{i}}"
+								id="repetition{{i}}"
+								type="number"
+								(keyup) = "addSeriesAndReps(exercise, repetition)"
+								required>
+							<span class="small-warning" *ngIf="!repetition.valid && repetition.touched">Please enter a repetition value!</span>
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-2 actions">
+						<i (click) = "checkExercise(exercise)" class="fa fa-eye" aria-hidden="true"></i>
+						<i (click) = "removeExercise(exercise.name)" class="fa fa-trash-o" aria-hidden="true"></i>
+					</div>
+				</div>
+				<button  class="btn btn-success" [disabled] = "!f.valid" type="submit">Add Workout</button>
+			</form>
+		</div>
+		<div *ngIf ="!exercises || exercises.length === 0 ">
+			<p class="text-center bold empty"> The draft is empty </p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<h3>Workouts List</h3>
+		<hr>
+		<app-workout-lists
+			*ngFor="let workout of workoutsList; let i = index"
+			[workout]="workout"
+			[index]= "i">
+		</app-workout-lists>
+	</div>
+</div>

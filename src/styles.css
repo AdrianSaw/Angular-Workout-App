@@ -1,0 +1,217 @@
+
+/* DEFAULT */
+
+body {
+	font-family: 'Lato', sans-serif;
+}
+
+a:hover, a:focus {
+	text-decoration: none;
+}
+
+textarea {
+	resize: none;
+}
+
+.heavy-bold {
+	font-weight: 900;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.empty {
+	font-size: 1.5em;
+	margin-top: 1em;
+}
+
+
+/* MAIN NAVIGATION */
+
+.navbar-default {
+	background-color: #337ab7;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+}
+.navbar-default .navbar-toggle:hover {
+	background-color: transparent;
+}
+.navbar-default .navbar-toggle:hover .icon-bar {
+	background-color: #000;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+.navbar-default .navbar-brand {
+	color: #fff;
+	font-weight: 900;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #fff;
+}
+
+.navbar-default .navbar-brand:focus {
+	color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+	font-weight: 900;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #333;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+	background-color:rgba(0,0,0,0.1);
+	color: #fff;
+}
+
+
+/* Validation */
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+	border: 1px solid red;
+}
+
+.small-warning {
+	font-size: 0.8em;
+	font-weight: 300;
+	font-style: italic;
+	position: absolute;
+	color: red;
+}
+
+
+/* Exercises */
+
+.exercises a {
+	color: inherit;
+}
+
+.exercises a:hover {
+	color: inherit;
+}
+
+.exercises-nav li.active a {
+	color: #fff;
+	background-color: #337ab7;
+}
+
+.exercise-router-item {
+	position: relative;
+    display: block;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.exercises-nav li a {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: auto;
+	font-weight: 700;
+	letter-spacing: 1.1px;
+	padding: 10px 15px;
+}
+
+.exercises-nav li:hover {
+	background-color: #337ab7;
+	color: #fff;
+}
+
+.exercises .list-group-item {
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5.5px 0px;
+}
+
+.panel {
+	margin-top: 1.5em;
+}
+
+.panel-group .add-icon i{
+	font-size: 1.5em;
+}
+
+.exercises .add-exercise label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.exercises .submit {
+	text-align: right;
+}
+
+.exercises .submit .btn {
+	font-size: 1.1em;
+	text-transform: uppercase;
+	font-weight: 900;
+	letter-spacing: 1.25px;
+}
+
+.exercise-detail {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.exercise-detail h4 i {
+	margin-left: 10px;
+	font-size: 1.2em;
+	cursor: pointer;
+	color: #eea236;
+}
+
+.exercise-detail h4 i:hover {
+	color: #f0ad4e;
+}
+
+.exercise-detail .description {
+	margin: 1em 0;
+	line-height: 150%;
+	text-align: justify;
+}
+
+.exercise-detail .control-btns {
+	display: flex;
+}
+
+.exercise-detail .control-btns button {
+	font-size: 1.2em;
+	text-transform: uppercase;
+	font-weight: 900;
+	margin: 0.5em 1em;
+}
+
+
+/*WorkoutList*/
+
+.workout-list {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.workout-list .actions {
+	cursor: pointer;
+}
+
+.workout-list .actions i {
+	font-size: 1.2em;
+	margin: 0 0.5em;
+}

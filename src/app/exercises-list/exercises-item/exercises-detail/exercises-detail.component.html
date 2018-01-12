@@ -1,0 +1,17 @@
+<div class="exercise-detail">
+	<h4 class="list-group-item-heading">{{exercise.name}} <i class="fa fa-pencil" aria-hidden="true" (click) = "onEditExercise()"> Edit</i></h4>
+	<div class="description">
+		<p>{{exercise.desc}}</p>
+	</div>
+	<img
+		[src]="exercise.imagePath"
+		alt="{{exercise.name}}"
+		class="img-responsive"
+		style="max-height: 200px; max-width: 200px">
+	<hr>
+	
+	<div class="control-btns">
+		<button class="btn btn-danger" (click) = "onRemoveExercise(exercise.name)"><i class="fa fa-trash-o" aria-hidden="true"> Remove</i></button>
+		<button class="btn btn-success" (click) = "onAddExerciseToWorkoutPlan(exercise)"><i class="fa fa-plus-circle" aria-hidden="true"> Add to draft</i></button>
+	</div>
+</div>
