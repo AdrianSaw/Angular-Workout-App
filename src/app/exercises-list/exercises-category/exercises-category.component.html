@@ -13,10 +13,10 @@
 	</div>
 	<div class="col-xs-12">
 		<accordion>
-			<accordion-group #group>
+			<accordion-group #group (isOpenChange)="toggleIcon($event)">
 				<div accordion-heading class="accordion-title">
 					<h4 class="bold">Add new Exercise to this category</h4>
-					<span class="float-right pull-right add-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+					<span class="float-right pull-right add-icon"><i [class]="openIcon" aria-hidden="true"></i></span>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 add-exercise">

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, HostBinding  } from '@angular/core';
 import { Exercise } from '../../shared/exercise.model';
 import { ExercisesService } from '../exercises.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -18,6 +18,7 @@ export class ExercisesCategoryComponent implements OnInit, OnDestroy {
   name: any;
   imgUrl: any;
   description: any;
+  openIcon = "fa fa-plus";
   private subscription: Subscription;
 
   constructor( private exercisesService: ExercisesService,
@@ -37,6 +38,10 @@ export class ExercisesCategoryComponent implements OnInit, OnDestroy {
           this.exercises = exercises;
         }
       );
+  }
+
+  toggleIcon(event: boolean) {
+    this.openIcon = event ? "fa fa-minus" : "fa fa-plus";
   }
 
   onAddNewExercise(form: FormGroup) {

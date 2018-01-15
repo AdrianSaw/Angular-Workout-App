@@ -26,11 +26,17 @@ textarea {
 	margin-top: 1em;
 }
 
+.light-shadow {
+	-webkit-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.3);
+}
 
 /* MAIN NAVIGATION */
 
 .navbar-default {
 	background-color: #337ab7;
+	border: none;
 }
 
 .navbar-default .navbar-toggle {
@@ -111,7 +117,20 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
     background-color: #fff;
     border: 1px solid #ddd;
 }
-
+.exercises-nav ul {
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+}
+.exercises-nav li {
+	border: none;
+}
+.exercises-nav li.active {
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+	z-index: 1001;
+}
 .exercises-nav li a {
 	display: flex;
 	justify-content: center;
@@ -125,6 +144,10 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
 .exercises-nav li:hover {
 	background-color: #337ab7;
 	color: #fff;
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+	z-index: 1000;
 }
 
 .exercises .list-group-item {
@@ -169,6 +192,11 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 1.5em;
+	background-color: rgba(0,0,0,0.01);
+	-webkit-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
 }
 
 .exercise-detail h4 i {
@@ -200,20 +228,31 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
 	font-weight: 900;
 }
 
-.edit-control {
+.edit {
+	padding: 1.5em;
+	background-color: rgba(0,0,0,0.01);
+	-webkit-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.3);
+}
+
+.edit .edit-control {
 	text-align: right;
 }
 
-.edit-control i {
+.edit .edit-control i {
 	font-size: 1.4em;
 	cursor: pointer;
 	color: #eea236;
 }
 
-.edit-control i:hover {
+.edit .edit-control i:hover {
 	color: #f0ad4e;
 }
 
+.exercises .edit .submit .btn {
+	font-size: 1.2em;
+}
 
 /*WorkoutList*/
 
