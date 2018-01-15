@@ -32,6 +32,10 @@ export class WorkoutDetailComponent implements OnInit {
         this.workout = this.workoutService.getWorkoutById(this.id);
       });
    }
+   
+  backToList() {
+    this.router.navigate(['../../'], {relativeTo: this.route});
+  }
 
   onRemoveWorkoutList() {
     this.workoutService.removeWorkoutFromList(this.id);
