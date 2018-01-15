@@ -74,11 +74,6 @@ export class ExercisesService {
   constructor(private workoutPlan: WorkoutPlanService,
               private toastr: ToastrService ) { }
 
-
-  getExercises() {
-    return this.exercises.slice();
-  }
-
   getExercisesCategories() {
     return this.exercisesCategories.slice();
   }
@@ -115,6 +110,24 @@ export class ExercisesService {
     } else {
       this.toastr.error('There is such exercise already');
     }
+  }
+  editExercise(exercise: Exercise, newExercise: Exercise) {
+
+   const editedExercise = this.exercises.filter((exe, index) => {
+      if (exe.name === exercise.name) {
+       if (newExercise.name === exe.name || 
+          this.exercises.filter((exe) => exe.name === newExercise.name).length < 1) {
+          exe.name = newExercise.name;
+          exe.imagePath = newExercise.imagePath;
+          exe.category = newExercise.category;
+          exe.desc = newExercise.desc;
+          this.ExercisesChanged.next(this.exercises.slice());
+          this.toastr.success('Exercise edited'); 
+        } else {
+          this.toastr.error('Exercise already exist');
+        }
+      }
+    });    
   }
 
   addExercisesToWorkoutDraftList(exercise: Exercise) {

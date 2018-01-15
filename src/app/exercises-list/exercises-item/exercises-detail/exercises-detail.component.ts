@@ -5,6 +5,7 @@ import {
   Router,
   ActivatedRoute,
   Params } from '@angular/router';
+import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-exercises-detail',
@@ -16,6 +17,13 @@ export class ExercisesDetailComponent implements OnInit {
   exercise: Exercise;
   id: number;
   cat: any;
+  form: any;
+
+  rename: string;
+  newImgUrl: string;
+  newDescription: string;
+
+  editMode = false;
 
   constructor(private exercisesService: ExercisesService,
               private router: Router,
@@ -36,8 +44,25 @@ export class ExercisesDetailComponent implements OnInit {
     this.exercisesService.addExercisesToWorkoutDraftList(exercise);
   }
 
-  onEditExercise() {
-    console.log('TODO: EDIT');
+  editModeToggle() {
+    this.editMode = !this.editMode;
+    this.rename = this.exercise.name;
+    this.newImgUrl = this.exercise.imagePath
+    this.newDescription = this.exercise.desc
+  }
+
+  onEditExercise(form: FormGroup) {
+    console.log(form);
+    this.form = new Exercise (
+      form.value.name.trim(),
+      form.value.description,
+      'back',
+      form.value.imgUrl
+    );
+
+    this.exercisesService.editExercise(this.exercise, this.form);
+
+    // form.reset();
   }
   onRemoveExercise(name: string) {
     this.exercisesService.removeExerciseFromList(name);

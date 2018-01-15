@@ -1,17 +1,71 @@
-<div class="exercise-detail">
-	<h4 class="list-group-item-heading">{{exercise.name}} <i class="fa fa-pencil" aria-hidden="true" (click) = "onEditExercise()"> Edit</i></h4>
-	<div class="description">
-		<p>{{exercise.desc}}</p>
+<div *ngIf="!editMode">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="exercise-detail">
+				<h4 class="list-group-item-heading">{{exercise.name}} <i class="fa fa-pencil" aria-hidden="true" (click) = "editModeToggle()"> Edit</i></h4>
+				<div class="description">
+					<p>{{exercise.desc}}</p>
+				</div>
+				<img
+					[src]="exercise.imagePath"
+					alt="{{exercise.name}}"
+					class="img-responsive"
+					style="max-height: 200px; max-width: 200px">
+				<hr>
+				
+				<div class="control-btns">
+					<button class="btn btn-danger" (click) = "onRemoveExercise(exercise.name)"><i class="fa fa-trash-o" aria-hidden="true"> Remove</i></button>
+					<button class="btn btn-success" (click) = "onAddExerciseToWorkoutPlan(exercise)"><i class="fa fa-plus-circle" aria-hidden="true"> Add to draft</i></button>
+				</div>
+			</div>
+		</div>
 	</div>
-	<img
-		[src]="exercise.imagePath"
-		alt="{{exercise.name}}"
-		class="img-responsive"
-		style="max-height: 200px; max-width: 200px">
-	<hr>
-	
-	<div class="control-btns">
-		<button class="btn btn-danger" (click) = "onRemoveExercise(exercise.name)"><i class="fa fa-trash-o" aria-hidden="true"> Remove</i></button>
-		<button class="btn btn-success" (click) = "onAddExerciseToWorkoutPlan(exercise)"><i class="fa fa-plus-circle" aria-hidden="true"> Add to draft</i></button>
+</div>
+<div *ngIf="editMode">
+	<div class="row">
+		<div class="col-xs-12">
+		<i class="fa fa-pencil" aria-hidden="true" (click) = "editModeToggle()"> Back</i>
+			<form (ngSubmit)="onEditExercise(f)" #f="ngForm">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input
+						[(ngModel)]="rename"
+						#name="ngModel"
+						class="form-control"
+						name="name"
+						id="name"
+						type="text"
+						required>
+					<span class="small-warning" *ngIf="!name.valid && name.touched">Please enter a exercise name!</span>
+				</div>
+				<div class="form-group">
+					<label for="imgUrl">Image URL</label>
+					<input
+						[(ngModel)]="newImgUrl"
+						class="form-control"
+						name="imgUrl"
+						id="imgUrl"
+						type="text">
+				</div>
+				<div class="form-group">
+					<label for="desc">Description</label>
+					<textarea
+						[(ngModel)]="newDescription"
+						#desc = "ngModel"
+						rows="4"
+						cols="50"
+						class="form-control"
+						name="description"
+						id="desc"
+						type="text"
+						required>
+					</textarea>
+					<span class="small-warning" *ngIf="!desc.valid && desc.touched">Please enter a exercise description!</span>
+				</div>
+				<div class="submit">
+					<button class="btn btn-success" [disabled] = "!f.valid" type="submit"> Change </button>
+				</div>
+			</form>	
+		</div>
 	</div>
 </div>
