@@ -65,7 +65,9 @@
 					<span class="small-warning" *ngIf="!desc.valid && desc.touched">Please enter a exercise description!</span>
 				</div>
 				<div class="submit">
-					<button class="btn btn-success" [disabled] = "!f.valid" type="submit"> Change </button>
+					<button class="btn btn-success" [disabled] = "!f.valid" type="submit">
+						<i class="fa fa-check" aria-hidden="true"> Change</i>
+					</button>
 				</div>
 			</form>	
 		</div>

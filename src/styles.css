@@ -39,6 +39,9 @@ textarea {
 .navbar-default .navbar-toggle:hover {
 	background-color: transparent;
 }
+.navbar-default .navbar-toggle:focus {
+	background-color: #337ab7;
+}
 .navbar-default .navbar-toggle:hover .icon-bar {
 	background-color: #000;
 }
@@ -58,20 +61,18 @@ textarea {
 	color: #fff;
 }
 
+
 .navbar-default .navbar-nav>li>a {
-	color: #fff;
+	color: rgba(255,255,255,.8);
 	font-weight: 900;
 }
 
-.navbar-default .navbar-nav>li>a:hover {
-	color: #333;
-}
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-	background-color:rgba(0,0,0,0.1);
+.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus {
 	color: #fff;
+	background-color:rgba(0,0,0,0.1);
 }
-
 
 /* Validation */
 
