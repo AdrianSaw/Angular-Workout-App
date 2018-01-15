@@ -114,9 +114,11 @@ export class ExercisesService {
   editExercise(exercise: Exercise, newExercise: Exercise) {
 
    const editedExercise = this.exercises.filter((exe, index) => {
-      if (exe.name === exercise.name) {
-       if (newExercise.name === exe.name || 
-          this.exercises.filter((exe) => exe.name === newExercise.name).length < 1) {
+      if (exe.name === exercise.name &&
+          newExercise.name !== exe.name ||
+          newExercise.desc !== exe.desc ||
+          newExercise.imagePath !== exe.imagePath) {
+       if (this.exercises.filter((exe) => exe.name === newExercise.name).length < 1) {
           this.workoutPlan.changeExercises(exe.name, newExercise);
           exe.name = newExercise.name;
           exe.imagePath = newExercise.imagePath;
@@ -124,9 +126,9 @@ export class ExercisesService {
           exe.desc = newExercise.desc;
           this.ExercisesChanged.next(this.exercises.slice());
           this.toastr.success('Exercise edited');
-        } else {
-          this.toastr.error('Exercise already exist');
         }
+      } else {
+        this.toastr.error('Nothing changed or exercise already exist');
       }
     });    
   }
