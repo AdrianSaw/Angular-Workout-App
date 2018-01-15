@@ -24,7 +24,9 @@
 <div *ngIf="editMode">
 	<div class="row">
 		<div class="col-xs-12">
-		<i class="fa fa-pencil" aria-hidden="true" (click) = "editModeToggle()"> Back</i>
+			<div class="edit-control">
+				<i class="fa fa-undo" aria-hidden="true" (click)="editModeToggle()"> Back</i>
+			</div>
 			<form (ngSubmit)="onEditExercise(f)" #f="ngForm">
 				<div class="form-group">
 					<label for="name">Name</label>

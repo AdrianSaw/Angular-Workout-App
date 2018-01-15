@@ -198,6 +198,20 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
 	margin: 0.5em 1em;
 }
 
+.edit-control {
+	text-align: right;
+}
+
+.edit-control i {
+	font-size: 1.4em;
+	cursor: pointer;
+	color: #eea236;
+}
+
+.edit-control i:hover {
+	color: #f0ad4e;
+}
+
 
 /*WorkoutList*/
 
