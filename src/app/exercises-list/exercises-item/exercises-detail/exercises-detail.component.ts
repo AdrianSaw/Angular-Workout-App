@@ -52,20 +52,18 @@ export class ExercisesDetailComponent implements OnInit {
   }
 
   onEditExercise(form: FormGroup) {
-    console.log(form);
     this.form = new Exercise (
       form.value.name.trim(),
       form.value.description,
-      'back',
+      this.cat,
       form.value.imgUrl
     );
-
     this.exercisesService.editExercise(this.exercise, this.form);
-
-    // form.reset();
   }
+
   onRemoveExercise(name: string) {
     this.exercisesService.removeExerciseFromList(name);
     this.router.navigate(['../'], {relativeTo: this.route});
   }
+
 }

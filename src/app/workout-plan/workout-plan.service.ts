@@ -58,7 +58,20 @@ export class WorkoutPlanService {
     this.exercises.push(exercise);
     this.ExercisesChanged.next(this.exercises.slice());
   }
-
+  changeExercises (name: string, newExercise: Exercise) {
+    this.exercises.filter( (exercise) => {
+      console.log(exercise.name === name);
+      console.log(exercise.name, name)
+    if(exercise.name === name){
+      exercise.name = newExercise.name;
+      exercise.desc = newExercise.desc;
+      exercise.imagePath = newExercise.imagePath;
+      console.log(exercise);
+    };
+  });
+    console.log(this.exercises);
+    this.ExercisesChanged.next(this.exercises.slice());
+  }
   removeExercise(name: string) {
     this.exercises = this.exercises.slice().filter( (exercise) => exercise.name !== name);
     this.toastr.success('Exercise removed from draft!');

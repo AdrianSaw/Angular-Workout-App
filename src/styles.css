@@ -189,14 +189,15 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
 }
 
 .exercise-detail .control-btns {
-	display: flex;
+	width: 100%;
+	text-align: right;
+	margin-top: 1em;
 }
 
 .exercise-detail .control-btns button {
 	font-size: 1.2em;
 	text-transform: uppercase;
 	font-weight: 900;
-	margin: 0.5em 1em;
 }
 
 .edit-control {
