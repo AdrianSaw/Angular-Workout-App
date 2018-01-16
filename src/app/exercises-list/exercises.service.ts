@@ -97,7 +97,8 @@ export class ExercisesService {
   }
 
   removeExerciseFromList(name: string) {
-    this.exercises = this.exercises.filter((exe) => exe.name !== name);
+    let newExerciseList = this.exercises.filter((exe) => exe.name !== name);
+    this.ExercisesChanged.next(newExerciseList);
     this.toastr.success('Exercise removed');
     this.workoutPlan.removeExercise(name);
   }
@@ -111,6 +112,7 @@ export class ExercisesService {
       this.toastr.error('There is such exercise already');
     }
   }
+  
   editExercise(exercise: Exercise, newExercise: Exercise) {
 
    const editedExercise = this.exercises.filter((exe, index) => {

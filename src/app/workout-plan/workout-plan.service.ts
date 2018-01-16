@@ -83,6 +83,7 @@ export class WorkoutPlanService {
     } else {
       exerciseComplement[0].repetition = seriesAndReps.value;
     }
+    this.ExercisesChanged.next(this.exercises.slice());
   }
 
   getWorkoutsList() {
@@ -98,6 +99,11 @@ export class WorkoutPlanService {
     this.WorkoutsListChanged.next(this.workoutsList.slice());
     this.toastr.success('Workout added to list!');
   }
+  
+  editWorkoutList() {
+    console.log("TODO")
+  }
+
   removeWorkoutFromList(id: number) {
     this.workoutsList = this.workoutsList.slice().filter( (workout, index) => index !== id);
   }
