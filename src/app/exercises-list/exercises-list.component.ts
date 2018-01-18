@@ -4,8 +4,7 @@ import { ExercisesService } from './exercises.service';
 @Component({
   selector: 'app-exercises-list',
   templateUrl: './exercises-list.component.html',
-  styleUrls: ['./exercises-list.component.css'],
-  providers: [ExercisesService]
+  styleUrls: ['./exercises-list.component.css']
 })
 export class ExercisesListComponent implements OnInit {
 
