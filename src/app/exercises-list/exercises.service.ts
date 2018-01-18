@@ -3,6 +3,9 @@ import { Exercise } from '../shared/exercise.model';
 import { WorkoutPlanService } from '../workout-plan/workout-plan.service';
 import { Subject } from 'rxjs/Subject';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+
 
 @Injectable()
 export class ExercisesService {
@@ -74,31 +77,31 @@ export class ExercisesService {
   constructor(private workoutPlan: WorkoutPlanService,
               private toastr: ToastrService ) { }
 
-  getExercisesCategories() {
-    return this.exercisesCategories.slice();
+  getExercisesCategories(): Observable<string[]> {
+    return of(this.exercisesCategories.slice());
   }
 
-  getExercisesByCategory(category: string) {
-    return this.exercises.slice().filter((exe) => exe.category === category);
+  getExercisesByCategory(category: string): Observable<Exercise[]> {
+    return of(this.exercises.slice().filter((exe) => exe.category === category));
   }
 
-  getExerciseID({name, category}) {
+  getExerciseID({name, category}): Observable<number> {
     let id;
     this.exercises.slice().filter((exe) => exe.category === category).filter((exe, index) => {
       if (exe.name === name) {
         id = index;
       }
     });
-    return id;
+    return of(id);
   }
 
-  getExercisesById(category: string, id: number) {
-    return this.exercises.slice().filter((exe) => exe.category === category.toLowerCase())[id];
+  getExercisesById(category: string, id: number): Observable<Exercise> {
+    return of(this.exercises.slice().filter((exe) => exe.category === category.toLowerCase())[id]);
   }
 
   removeExerciseFromList(name: string) {
-    let newExerciseList = this.exercises.filter((exe) => exe.name !== name);
-    this.ExercisesChanged.next(newExerciseList);
+    this.exercises = this.exercises.filter((exe) => exe.name !== name);
+    this.ExercisesChanged.next(this.exercises.slice());
     this.toastr.success('Exercise removed');
     this.workoutPlan.removeExercise(name);
   }
@@ -136,11 +139,16 @@ export class ExercisesService {
   }
 
   addExercisesToWorkoutDraftList(exercise: Exercise) {
-    if (this.workoutPlan.getExercises().filter((exe) => exe.name === exercise.name).length < 1) {
-      this.workoutPlan.addExercises(exercise);
-      this.toastr.success('Exercise added to workout draft');
-    } else {
-      this.toastr.error('Exercise already added');
-    }
+      this.workoutPlan.getExercises()
+          .subscribe(
+            (exercises: Exercise[]) => {
+              if(exercises.filter((exe) => exe.name === exercise.name).length < 1) {
+                this.workoutPlan.addExercises(exercise);
+                this.toastr.success('Exercise added to workout draft');       
+              } else {
+                this.toastr.error('Exercise already added');
+            }
+          });
   }
+
 }

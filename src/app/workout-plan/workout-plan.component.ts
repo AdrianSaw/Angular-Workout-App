@@ -21,14 +21,24 @@ export class WorkoutPlanComponent implements OnInit, OnDestroy {
   exercises: Exercise[];
   workoutsList: WorkoutList[];
   form: any;
+  id: number;
 
   constructor(private workoutPlanService: WorkoutPlanService,
               private exercisesService: ExercisesService,
               private router: Router) { }
 
   ngOnInit() {
-    this.exercises = this.workoutPlanService.getExercises();
-    this.workoutsList = this.workoutPlanService.getWorkoutsList();
+    this.workoutPlanService.getExercises()
+        .subscribe(
+          (exercises: Exercise[]) => {
+            this.exercises = exercises;
+          });
+
+    this.workoutPlanService.getWorkoutsList()
+        .subscribe(
+          (workoutList: WorkoutList[]) => {
+            this.workoutsList = workoutList;
+          });
 
     this.exerciseSubscription = this.workoutPlanService.ExercisesChanged
       .subscribe (
@@ -50,12 +60,21 @@ export class WorkoutPlanComponent implements OnInit, OnDestroy {
   }
 
   checkExercise(exercise: Exercise) {
-    const id = this.exercisesService.getExerciseID(exercise);
-    this.router.navigate(['../exercises/' + exercise.category + '/' + id]);
+
+    this.exercisesService.getExerciseID(exercise)
+        .subscribe(
+          (id: number) => this.id = id);
+        
+    this.router.navigate(['../exercises/' + exercise.category + '/' + this.id]);
   }
 
   removeExercise(name: string) {
-    this.exercises = this.workoutPlanService.removeExercise(name);
+    this.workoutPlanService.removeExercise(name)
+        .subscribe(
+          (exercises: Exercise[]) => {
+            this.exercises = exercises;
+          }
+        );
   }
 
   addNewWorkoutList(form: FormGroup) {

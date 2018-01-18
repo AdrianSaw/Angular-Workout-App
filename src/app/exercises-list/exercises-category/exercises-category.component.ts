@@ -28,8 +28,11 @@ export class ExercisesCategoryComponent implements OnInit, OnDestroy {
     this.route.params
       .subscribe( (params: Params) => {
         this.category = params.cat.toLowerCase();
-        this.exercises = this.exercisesService.getExercisesByCategory(this.category);
-      });
+
+        this.exercisesService.getExercisesByCategory(this.category)
+            .subscribe(
+              (exercises: Exercise[]) => this.exercises = exercises);
+        });
 
 
     this.subscription = this.exercisesService.ExercisesChanged

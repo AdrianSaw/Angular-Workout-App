@@ -3,6 +3,8 @@ import { Exercise } from '../shared/exercise.model';
 import { WorkoutList } from '../shared/workout-list.model';
 import { Subject } from 'rxjs/Subject';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class WorkoutPlanService {
@@ -50,8 +52,8 @@ export class WorkoutPlanService {
 
   constructor(private toastr: ToastrService) { }
 
-  getExercises() {
-    return this.exercises.slice();
+  getExercises(): Observable<Exercise[]> {
+    return of(this.exercises.slice());
   }
 
   addExercises( exercise: Exercise) {
@@ -70,10 +72,10 @@ export class WorkoutPlanService {
     this.ExercisesChanged.next(this.exercises.slice());
   }
 
-  removeExercise(name: string) {
+  removeExercise(name: string): Observable<Exercise[]> {
     this.exercises = this.exercises.slice().filter( (exercise) => exercise.name !== name);
     this.toastr.success('Exercise removed from draft!');
-    return this.exercises.slice();
+    return of(this.exercises.slice());
   }
 
   setSeriesAndRepsOfExercise(name: string, seriesAndReps ) {
@@ -86,12 +88,12 @@ export class WorkoutPlanService {
     this.ExercisesChanged.next(this.exercises.slice());
   }
 
-  getWorkoutsList() {
-    return this.workoutsList.slice();
+  getWorkoutsList(): Observable<WorkoutList[]> {
+    return of(this.workoutsList.slice());
   }
 
-  getWorkoutById(id: number) {
-    return this.workoutsList.slice()[id];
+  getWorkoutById(id: number): Observable<WorkoutList> {
+    return of(this.workoutsList.slice()[id]);
   }
 
   addWorkoutToWorkoutList(workout: WorkoutList) {

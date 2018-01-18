@@ -14,7 +14,9 @@ export class ExercisesListComponent implements OnInit {
   constructor( private exercisesService: ExercisesService) { }
 
   ngOnInit() {
-    this.exercisesCategories = this.exercisesService.getExercisesCategories();
+    this.exercisesService.getExercisesCategories()
+    	.subscribe(
+    		(exercisesCategories) => this.exercisesCategories = exercisesCategories);
   }
 
 }

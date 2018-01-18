@@ -29,7 +29,12 @@ export class WorkoutDetailComponent implements OnInit {
       .subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.workout = this.workoutService.getWorkoutById(this.id);
+         this.workoutService.getWorkoutById(this.id)
+            .subscribe(
+              (workout: WorkoutList) => {
+                this.workout = workout;
+              }
+            );
       });
    }
    

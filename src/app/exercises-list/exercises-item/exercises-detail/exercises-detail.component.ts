@@ -36,7 +36,10 @@ export class ExercisesDetailComponent implements OnInit {
         (params: Params) => {
           this.id = +params['id'];
           this.cat = params['cat'];
-          this.exercise = this.exercisesService.getExercisesById(this.cat, this.id);
+          this.exercisesService.getExercisesById(this.cat, this.id)
+            .subscribe((exercise: Exercise) => {
+              this.exercise = exercise;
+          });
         });
   }
 
@@ -59,6 +62,7 @@ export class ExercisesDetailComponent implements OnInit {
       form.value.imgUrl
     );
     this.exercisesService.editExercise(this.exercise, this.form);
+    this.editMode = false;
   }
 
   onRemoveExercise(name: string) {
