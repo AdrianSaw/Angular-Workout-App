@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import { WorkoutDetailComponent } from './workout-plan/workout-lists/workout-det
 import { WorkoutPlanService } from './workout-plan/workout-plan.service';
 import { ExercisesService } from './exercises-list/exercises.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { WorkoutDataService } from './shared/http.service';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     AppRoutingModule,
     AccordionModule.forRoot(),
     CollapseModule.forRoot(),
     ToastrModule.forRoot()
   ],
-  providers: [WorkoutPlanService, ExercisesService],
+  providers: [WorkoutPlanService, ExercisesService, WorkoutDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

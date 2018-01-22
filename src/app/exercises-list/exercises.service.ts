@@ -77,6 +77,15 @@ export class ExercisesService {
   constructor(private workoutPlan: WorkoutPlanService,
               private toastr: ToastrService ) { }
 
+  setExercises(exercises: Exercise[]) {
+    this.exercises = exercises;
+    this.ExercisesChanged.next(this.exercises.slice());
+  }
+
+  getExercises() {
+    return this.exercises.slice();
+  }
+
   getExercisesCategories(): Observable<string[]> {
     return of(this.exercisesCategories.slice());
   }
