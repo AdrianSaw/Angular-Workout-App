@@ -13,4 +13,12 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() { }
 
+  saveData() {
+  	console.log('save');
+  }
+
+  fetchData() {
+  	console.log('fetch');
+  }
+  
 }
