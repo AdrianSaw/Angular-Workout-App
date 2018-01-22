@@ -88,6 +88,12 @@ export class WorkoutPlanService {
     this.ExercisesChanged.next(this.exercises.slice());
   }
 
+  setWrokoutsList(workoutsList: WorkoutList[]) {
+    console.log(workoutsList);
+    this.workoutsList = workoutsList;
+    this.WorkoutsListChanged.next(this.workoutsList.slice());
+  }
+
   getWorkoutsList(): Observable<WorkoutList[]> {
     return of(this.workoutsList.slice());
   }
