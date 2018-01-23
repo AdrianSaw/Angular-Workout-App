@@ -31,14 +31,22 @@ export class ExercisesCategoryComponent implements OnInit, OnDestroy {
 
         this.exercisesService.getExercisesByCategory(this.category)
             .subscribe(
-              (exercises: Exercise[]) => this.exercises = exercises);
+              (exercises: Exercise[]) => {
+                this.exercises = exercises;
+              });
         });
 
 
     this.subscription = this.exercisesService.ExercisesChanged
       .subscribe (
         (exercises: Exercise[]) => {
-          this.exercises = exercises;
+          let updatedExercises = [];
+          for (let i = 0; i < exercises.length; i++) {
+            if (exercises[i]['category'] === this.category) {
+              updatedExercises.push(exercises[i]);
+            }
+          }
+          this.exercises = updatedExercises;
         }
       );
   }
