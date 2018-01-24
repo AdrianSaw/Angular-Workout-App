@@ -22,6 +22,11 @@ import { WorkoutPlanService } from './workout-plan/workout-plan.service';
 import { ExercisesService } from './exercises-list/exercises.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WorkoutDataService } from './shared/http.service';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthService } from './auth/auth.service';
+import { StartPageComponent } from './start-page/start-page.component';
+import { AuthGuard } from './auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,10 @@ import { WorkoutDataService } from './shared/http.service';
     WorkoutPlanComponent,
     WorkoutListsComponent,
     WorkoutDetailComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SigninComponent,
+    SignupComponent,
+    StartPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,7 @@ import { WorkoutDataService } from './shared/http.service';
     CollapseModule.forRoot(),
     ToastrModule.forRoot()
   ],
-  providers: [WorkoutPlanService, ExercisesService, WorkoutDataService],
+  providers: [WorkoutPlanService, ExercisesService, WorkoutDataService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

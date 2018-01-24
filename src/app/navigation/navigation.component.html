@@ -11,10 +11,19 @@
 		<div class="collapse navbar-collapse" [collapse]="isCollapsed">
 			<div class="navbar-default">
 				<ul class="nav navbar-nav">
-					<li routerLinkActive="active"><a routerLink="/exercises">Exercises</a></li>
-					<li routerLinkActive="active"><a routerLink="/workout">Workout</a></li>
-					<li><a (click)="saveData()">Save Data</a></li>
-					<li><a (click)="fetchData()">Fetch Data</a></li>
+					<ng-template [ngIf]="authService.isAuth()">
+						<li routerLinkActive="active"><a routerLink="/exercises">Exercises</a></li>
+						<li routerLinkActive="active"><a routerLink="/workout">Workout</a></li>
+					</ng-template>
+					<ng-template [ngIf]="!authService.isAuth()">
+						<li routerLinkActive="active"><a routerLink="/signin">Login</a></li>				
+						<li routerLinkActive="active"><a routerLink="/signup">Register</a></li>
+					</ng-template>
+					<ng-template [ngIf]="authService.isAuth()">
+						<li><a style="cursor:pointer" (click)="onLogout()">Logout</a></li>		
+						<li><a (click)="saveData()">Save Data</a></li>
+						<li><a (click)="fetchData()">Fetch Data</a></li>
+					</ng-template>
 				</ul>
 			</div>
 		</div>
