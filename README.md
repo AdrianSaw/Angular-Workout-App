@@ -11,6 +11,5 @@ I'm planning to connect it to firebase - starting with user authetication.
 <br>
 <b>TODO:</b><br>
 -Edit mode for workout detail<br>
--Authetication<br>
 -Quite a lot of style upgrades<br>
 -Optimalisation<br>
