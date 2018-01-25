@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WorkoutDataService } from '../shared/http.service';
+import { WorkoutDataService } from '../../shared/http.service';
 import { Response } from '@angular/http'; 
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
