@@ -6,13 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { WorkoutPlanService } from './workout-plan/workout-plan.service';
-import { ExercisesService } from './exercises-list/exercises.service';
-import { WorkoutDataService } from './shared/http.service';
-import { AuthService } from './auth/auth.service';
-
-import { AuthGuard } from './auth/auth-guard.service';
-
 import { ExercisesModule } from './exercises-list/exercises.module';
 import { WorkoutsModule } from './workout-plan/workouts.module';
 import { AuthModule } from './auth/auth.module';
@@ -39,7 +32,7 @@ import { CoreModule } from './core/core.module';
     ToastrModule.forRoot(),
     CoreModule
   ],
-  providers: [WorkoutPlanService, ExercisesService, WorkoutDataService, AuthService, AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
