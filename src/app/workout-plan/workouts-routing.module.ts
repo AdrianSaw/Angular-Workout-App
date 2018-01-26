@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/auth-guard.service';
-
 import { WorkoutPlanComponent } from './workout-plan.component';
 import { WorkoutDetailComponent } from './workout-lists/workout-detail/workout-detail.component';
-
-
 
 const workoutsRoutes: Routes = [
   { path: '', component: WorkoutPlanComponent, canActivate: [AuthGuard] },
@@ -18,4 +15,5 @@ const workoutsRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class WorkoutsRoutingModule { }

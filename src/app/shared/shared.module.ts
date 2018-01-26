@@ -11,7 +11,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 	imports: [
 		CommonModule,
 		AccordionModule.forRoot(),
-    CollapseModule.forRoot()
+    	CollapseModule.forRoot()
 	],
 	exports: [
 		AccordionModule,
@@ -19,4 +19,4 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 	]
 })
 
-export class SharedModule {}
+export class SharedModule { }

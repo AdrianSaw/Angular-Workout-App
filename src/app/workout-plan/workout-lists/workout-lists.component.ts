@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-workout-lists',
-  templateUrl: './workout-lists.component.html',
-  styleUrls: ['./workout-lists.component.css']
+  templateUrl: './workout-lists.component.html'
 })
 export class WorkoutListsComponent implements OnInit {
   @Input('index') index;

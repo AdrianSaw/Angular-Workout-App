@@ -9,8 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-workout-plan',
-  templateUrl: './workout-plan.component.html',
-  styleUrls: ['./workout-plan.component.css']
+  templateUrl: './workout-plan.component.html'
 })
 
 export class WorkoutPlanComponent implements OnInit, OnDestroy {
@@ -18,8 +17,8 @@ export class WorkoutPlanComponent implements OnInit, OnDestroy {
   private exerciseSubscription: Subscription;
   private workoutListSubscription: Subscription;
 
-  exercises: Exercise[];
-  workoutsList: WorkoutList[];
+  exercises: Exercise[] = [];
+  workoutsList: WorkoutList[] = [];
   form: any;
   id: number;
 
@@ -27,63 +26,53 @@ export class WorkoutPlanComponent implements OnInit, OnDestroy {
               private exercisesService: ExercisesService,
               private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.workoutPlanService.getExercises()
-        .subscribe(
-          (exercises: Exercise[]) => {
-            this.exercises = exercises;
-          });
+      .subscribe((exercises: Exercise[]) => {
+        this.exercises = exercises ? exercises : null;
+      });
 
     this.workoutPlanService.getWorkoutsList()
-        .subscribe(
-          (workoutList: WorkoutList[]) => {
-            this.workoutsList = workoutList;
-          });
+      .subscribe((workoutList: WorkoutList[]) => {
+        this.workoutsList = workoutList;
+      });
 
     this.exerciseSubscription = this.workoutPlanService.ExercisesChanged
-      .subscribe (
-        (exercises: Exercise[]) => {
-          this.exercises = exercises;
-        }
-      );
+      .subscribe ((exercises: Exercise[]) => {
+        this.exercises = exercises;
+      });
 
     this.workoutListSubscription = this.workoutPlanService.WorkoutsListChanged
-      .subscribe (
-        (workoutsList: WorkoutList[]) => {
-          this.workoutsList = workoutsList;
-        }
-      );
+      .subscribe ((workoutsList: WorkoutList[]) => {
+        this.workoutsList = workoutsList;
+      });
   }
 
-  addSeriesAndReps(exercise: Exercise, SeriesAndReps ) {
+  addSeriesAndReps(exercise: Exercise, SeriesAndReps ): void {
     this.workoutPlanService.setSeriesAndRepsOfExercise(exercise.name, SeriesAndReps);
   }
 
-  checkExercise(exercise: Exercise) {
-
+  checkExercise(exercise: Exercise): void {
     this.exercisesService.getExerciseID(exercise)
-        .subscribe(
-          (id: number) => this.id = id);
-        
+      .subscribe((id: number) => this.id = id);
+      
     this.router.navigate(['../exercises/' + exercise.category + '/' + this.id]);
   }
 
   removeExercise(name: string) {
     this.workoutPlanService.removeExercise(name)
-        .subscribe(
-          (exercises: Exercise[]) => {
-            this.exercises = exercises;
-          }
-        );
+      .subscribe((exercises: Exercise[]) => {
+        this.exercises = exercises;
+      });
   }
 
-  addNewWorkoutList(form: FormGroup) {
+  addNewWorkoutList(form: FormGroup): void {
     this.form = new WorkoutList (form.value.name, this.exercises);
     this.workoutPlanService.addWorkoutToWorkoutList(this.form);
     form.reset();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.exerciseSubscription.unsubscribe();
     this.workoutListSubscription.unsubscribe();
   }

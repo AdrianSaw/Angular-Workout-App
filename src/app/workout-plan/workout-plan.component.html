@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<h3>Workout List draft</h3>
 		<hr>
-		<div *ngIf="exercises.length !== 0">
+		<div *ngIf="exercises">
 			<form (ngSubmit) = "addNewWorkoutList(f)" #f="ngForm">
 				<div class="form-group">
 					<label for="name">Workout List Name</label>

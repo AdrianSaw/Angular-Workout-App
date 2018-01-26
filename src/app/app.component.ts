@@ -3,9 +3,18 @@ import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+	<app-navigation></app-navigation>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+	</div>
+  `
 })
+
 export class AppComponent { 
 
 	ngOnInit() {
@@ -14,4 +23,5 @@ export class AppComponent {
 		    authDomain: "workout-app-ee5ef.firebaseapp.com"
 		});
 	}
+
 }

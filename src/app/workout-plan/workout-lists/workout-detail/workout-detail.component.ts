@@ -9,8 +9,7 @@ import {
 
 @Component({
   selector: 'app-workout-detail',
-  templateUrl: './workout-detail.component.html',
-  styleUrls: ['./workout-detail.component.css']
+  templateUrl: './workout-detail.component.html'
 })
 
 export class WorkoutDetailComponent implements OnInit {
@@ -18,31 +17,28 @@ export class WorkoutDetailComponent implements OnInit {
   workout: WorkoutList;
   id: number;
 
-  constructor( private exercisesService: ExercisesService,
-         private router: Router,
-         private route: ActivatedRoute,
-         private workoutService: WorkoutPlanService ) {
+  constructor (private exercisesService: ExercisesService,
+               private router: Router,
+               private route: ActivatedRoute,
+               private workoutService: WorkoutPlanService ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params
-      .subscribe(
-      (params: Params) => {
+      .subscribe((params: Params) => {
         this.id = +params['id'];
-         this.workoutService.getWorkoutById(this.id)
-            .subscribe(
-              (workout: WorkoutList) => {
-                this.workout = workout;
-              }
-            );
+        this.workoutService.getWorkoutById(this.id)
+          .subscribe((workout: WorkoutList) => {
+            this.workout = workout;
+          });
       });
-   }
+  }
    
-  backToList() {
+  backToList(): void {
     this.router.navigate(['../../'], {relativeTo: this.route});
   }
 
-  onRemoveWorkoutList() {
+  onRemoveWorkoutList(): void {
     this.workoutService.removeWorkoutFromList(this.id);
     this.router.navigate(['../../'], {relativeTo: this.route});
   }

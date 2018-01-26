@@ -8,7 +8,6 @@ import { ExercisesCategoryComponent } from './exercises-category/exercises-categ
 import { ExercisesDetailComponent } from './exercises-item/exercises-detail/exercises-detail.component';
 
 
-
 const exercisesRoutes: Routes = [
   { path: 'exercises', component: ExercisesListComponent, canActivate: [AuthGuard], children: [
     { path: '', component: ExercisesStartComponent },
@@ -23,4 +22,5 @@ const exercisesRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class ExercisesRoutingModule { }

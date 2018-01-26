@@ -8,7 +8,7 @@
 			[index]= "i">
 		</app-exercises-item>
 	</div>
-	<div class="col-xs-12" *ngIf="exercises.length === 0">
+	<div class="col-xs-12" *ngIf=" !exercises || exercises.length === 0">
 		<p class="text-center bold empty"> Please add exercises if you want to preview them </p>
 	</div>
 	<div class="col-xs-12">
