@@ -15,6 +15,7 @@ import { WorkoutPlanService } from './workout-plan/workout-plan.service';
 import { ExercisesService } from './exercises-list/exercises.service';
 import { WorkoutDataService } from './shared/http.service';
 import { AuthService } from './auth/auth.service';
+import { ApiService } from './shared/api.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthService } from './auth/auth.service';
     WorkoutPlanService, 
     ExercisesService, 
     WorkoutDataService, 
-    AuthService
+    AuthService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

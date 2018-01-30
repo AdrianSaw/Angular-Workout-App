@@ -34,7 +34,7 @@ export class ExercisesService {
   }
 
   getExercisesByCategory(category: string): Observable<Exercise[]> {
-    return of(this.exercises.slice().filter((exe) => exe.category === category));
+    return of(this.exercises.slice().filter((exe) => exe.category.toLowerCase() === category));
   }
 
   getExerciseID({name, category}): Observable<number> {
@@ -46,7 +46,7 @@ export class ExercisesService {
   }
 
   getExercisesById(category: string, id: number): Observable<Exercise> {
-    return of(this.exercises.slice().filter((exe) => exe.category === category.toLowerCase())[id]);
+    return of(this.exercises.slice().filter((exe) => exe.category.toLowerCase() === category.toLowerCase())[id]);
   }
 
   removeExerciseFromList(name: string): void {
@@ -66,24 +66,19 @@ export class ExercisesService {
     }
   }
   
-  editExercise(exercise: Exercise, newExercise: Exercise): void {
+  editExercise(oldExercise: Exercise, newExercise: Exercise): void {
     // add id to exercise model to make it clean
-    const editedExercise = this.exercises.filter((exe, index) => {
-      if (exe.name === exercise.name &&
-          newExercise.name !== exe.name ||
-          newExercise.desc !== exe.desc ||
-          newExercise.imagePath !== exe.imagePath) {
-
-        if (this.exercises.filter((exe) => exe.name === newExercise.name).length < 1) {
-          this.workoutPlan.changeExercises(exe.name, newExercise);
-          exe.name = newExercise.name;
-          exe.imagePath = newExercise.imagePath;
-          exe.category = newExercise.category;
-          exe.desc = newExercise.desc;
+    const editedExercise = this.exercises.filter((exercise, index) => {
+      if (exercise.name === oldExercise.name) {
+        if (this.exercises.filter((exercise) => exercise.name === oldExercise.name).length === 1) {
+          this.workoutPlan.changeExercises(exercise.name, newExercise);
+          exercise.name = newExercise.name;
+          exercise.imagePath = newExercise.imagePath;
+          exercise.category = newExercise.category;
+          exercise.desc = newExercise.desc;
           this.ExercisesChanged.next(this.exercises.slice());
           this.toastr.success('Exercise edited');
         }
-
       } else {
         this.toastr.error('Nothing changed or exercise already exist');
       }

@@ -4,6 +4,7 @@ import { ExercisesService } from '../exercises-list/exercises.service';
 import { WorkoutPlanService } from '../workout-plan/workout-plan.service';
 import { Exercise } from './exercise.model';
 import { AuthService } from '../auth/auth.service';
+import { ApiService } from './api.service';
 
 import "rxjs/add/operator/map";
 
@@ -15,9 +16,12 @@ export class WorkoutDataService {
 	constructor(
 		private http: Http, 
 		private exercisesService: ExercisesService,
-		private workoutPlanService: WorkoutPlanService, private authService: AuthService) {
+		private workoutPlanService: WorkoutPlanService, 
+		private authService: AuthService,
+		private apiService: ApiService) {
 
 	}
+
 
 	httpRequest(url, method) {
 		const token = this.authService.getToken();
@@ -34,14 +38,13 @@ export class WorkoutDataService {
 					return response.json();
 				})
 				.subscribe((appData) => {
-						console.log(appData);
-						this.exercisesService.setExercises(appData['exercises']);
-						this.workoutPlanService.setWrokoutsList(appData['workouts'].value);
-					}
-				);
+					this.exercisesService.setExercises(appData['exercises']);
+					this.workoutPlanService.setWrokoutsList(appData['workouts'].value);
+				});
 		}
 
 	}
+
 
 }
 
