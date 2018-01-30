@@ -12,4 +12,4 @@ I'm planning to connect it to firebase - starting with user authetication.
 <b>TODO:</b><br>
 -Edit mode for workout detail<br>
 -Quite a lot of style upgrades<br>
--Optimalisation<br>
+-Linter + code refactor<br>
