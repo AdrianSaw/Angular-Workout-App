@@ -13,11 +13,11 @@ export class ExercisesService {
   ExercisesChanged = new Subject<Exercise[]>();
 
   private exercisesCategories = ['Chest', 'Back', 'Legs', 'Biceps', 'Triceps', 'Shoulders', 'ABS', 'Calves', 'Thighs&Buttocks'];
-
   private exercises: Exercise[] = [];
 
-  constructor(private workoutPlan: WorkoutPlanService,
-              private toastr: ToastrService ) { }
+  constructor(
+    private workoutPlan: WorkoutPlanService,
+    private toastr: ToastrService) { }
 
   setExercises(exercises: Exercise[]): void {
     this.exercises = exercises ? exercises : [];
@@ -34,43 +34,42 @@ export class ExercisesService {
   }
 
   getExercisesByCategory(category: string): Observable<Exercise[]> {
-    return of(this.exercises.slice().filter((exe) => exe.category.toLowerCase() === category));
+    return of(this.exercises.slice().filter((exercise) => exercise.category.toLowerCase() === category));
   }
 
   getExerciseID({name, category}): Observable<number> {
     let id;
-    this.exercises.slice().filter((exe) => exe.category === category).filter((exe, index) => {
-      if (exe.name === name) { id = index;}
+    this.exercises.slice().filter((exercise) => exercise.category === category).filter((exercise, index) => {
+      if (exercise.name === name) { id = index; }
     });
     return of(id);
   }
 
   getExercisesById(category: string, id: number): Observable<Exercise> {
-    return of(this.exercises.slice().filter((exe) => exe.category.toLowerCase() === category.toLowerCase())[id]);
+    return of(this.exercises.slice().filter((exercise) => exercise.category.toLowerCase() === category.toLowerCase())[id]);
   }
 
   removeExerciseFromList(name: string): void {
-    this.exercises = this.exercises.filter((exe) => exe.name !== name);
+    this.exercises = this.exercises.filter((exercise) => exercise.name !== name);
     this.ExercisesChanged.next(this.exercises.slice());
     this.toastr.success('Exercise removed');
     this.workoutPlan.removeExercise(name);
   }
 
-  addNewExercisesToList(exercise: Exercise): void {
-    if (this.exercises.filter((exe) => exe.name === exercise.name).length < 1) {
-      this.exercises.push(exercise);
-      this.ExercisesChanged.next(this.exercises.slice().filter((exe) => exe.category === exercise.category));
+  addNewExercisesToList(newExercise: Exercise): void {
+    if (this.exercises.filter((exercise) => exercise.name === newExercise.name).length < 1) {
+      this.exercises.push(newExercise);
+      this.ExercisesChanged.next(this.exercises.slice().filter((exercise) => exercise.category === newExercise.category));
       this.toastr.success('New exercise added');
     } else {
       this.toastr.error('There is such exercise already');
     }
   }
-  
+
   editExercise(oldExercise: Exercise, newExercise: Exercise): void {
-    // add id to exercise model to make it clean
+    // TODO: add id to exercise model to make it clean
     const editedExercise = this.exercises.filter((exercise, index) => {
       if (exercise.name === oldExercise.name) {
-        if (this.exercises.filter((exercise) => exercise.name === oldExercise.name).length === 1) {
           this.workoutPlan.changeExercises(exercise.name, newExercise);
           exercise.name = newExercise.name;
           exercise.imagePath = newExercise.imagePath;
@@ -78,19 +77,16 @@ export class ExercisesService {
           exercise.desc = newExercise.desc;
           this.ExercisesChanged.next(this.exercises.slice());
           this.toastr.success('Exercise edited');
-        }
-      } else {
-        this.toastr.error('Nothing changed or exercise already exist');
       }
-    });    
+    });
   }
 
-  addExercisesToWorkoutDraftList(exercise: Exercise): void {
+  addExercisesToWorkoutDraftList(draftExercise: Exercise): void {
     this.workoutPlan.getExercises()
       .subscribe((exercises: Exercise[]) => {
-        if (exercises.filter((exe) => exe.name === exercise.name).length < 1) {
-          this.workoutPlan.addExercises(exercise);
-          this.toastr.success('Exercise added to workout draft');       
+        if (exercises.filter((exercise) => exercise.name === draftExercise.name).length < 1) {
+          this.workoutPlan.addExercises(draftExercise);
+          this.toastr.success('Exercise added to workout draft');
         } else {
           this.toastr.error('Exercise already added');
         }

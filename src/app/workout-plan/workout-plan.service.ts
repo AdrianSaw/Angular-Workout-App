@@ -25,14 +25,14 @@ export class WorkoutPlanService {
     this.exercises.push(exercise);
     this.ExercisesChanged.next(this.exercises.slice());
   }
-  
+
   changeExercises (name: string, newExercise: Exercise): void {
     this.exercises.filter( (exercise) => {
-      if(exercise.name === name){
+      if (exercise.name === name) {
         exercise.name = newExercise.name;
         exercise.desc = newExercise.desc;
         exercise.imagePath = newExercise.imagePath;
-      };
+      }
     });
     this.ExercisesChanged.next(this.exercises.slice());
   }
@@ -70,9 +70,9 @@ export class WorkoutPlanService {
     this.WorkoutsListChanged.next(this.workoutsList.slice());
     this.toastr.success('Workout added to list!');
   }
-  
+
   editWorkoutList(): void {
-    console.log("TODO")
+    console.log('TODO');
   }
 
   removeWorkoutFromList(id: number): void {
