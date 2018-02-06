@@ -1,11 +1,12 @@
 export class Exercise {
 
-  constructor(public name: string,
-              public desc: string,
-              public category: string,
-              public imagePath?: string,
-              public series?: number,
-              public repetition?: number) {
+  constructor(
+    public name: string,
+    public desc: string,
+    public category: string,
+    public imagePath?: string,
+    public series?: number,
+    public repetition?: number) {
 
     this.name = name;
     this.desc = desc;
@@ -14,5 +15,5 @@ export class Exercise {
     this.series = series;
     this.repetition = repetition;
   }
-  
+
 }
