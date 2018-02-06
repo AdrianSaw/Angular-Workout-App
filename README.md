@@ -9,3 +9,4 @@ It let user create his own library of exercises and workouts.
 -Edit mode for workout detail<br>
 -Quite a lot of style upgrades<br>
 -Linter + code refactor<br>
+-General fixes
