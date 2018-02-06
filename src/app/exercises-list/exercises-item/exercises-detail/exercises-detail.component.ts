@@ -50,8 +50,8 @@ export class ExercisesDetailComponent implements OnInit {
   editModeToggle() {
     this.editMode = !this.editMode;
     this.rename = this.exercise.name;
-    this.newImgUrl = this.exercise.imagePath
-    this.newDescription = this.exercise.desc
+    this.newImgUrl = this.exercise.imagePath;
+    this.newDescription = this.exercise.desc;
   }
 
   onEditExercise(form: FormGroup) {

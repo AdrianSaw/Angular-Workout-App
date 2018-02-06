@@ -18,7 +18,7 @@ export class ExercisesCategoryComponent implements OnInit, OnDestroy {
   name: any;
   imgUrl: any;
   description: any;
-  openIcon = "fa fa-plus";
+  openIcon = 'fa fa-plus';
   private subscription: Subscription;
 
   constructor( private exercisesService: ExercisesService,
@@ -40,7 +40,7 @@ export class ExercisesCategoryComponent implements OnInit, OnDestroy {
     this.subscription = this.exercisesService.ExercisesChanged
       .subscribe (
         (exercises: Exercise[]) => {
-          let updatedExercises = [];
+          const updatedExercises = [];
           for (let i = 0; i < exercises.length; i++) {
             if (exercises[i]['category'] === this.category) {
               updatedExercises.push(exercises[i]);
@@ -52,7 +52,7 @@ export class ExercisesCategoryComponent implements OnInit, OnDestroy {
   }
 
   toggleIcon(event: boolean) {
-    this.openIcon = event ? "fa fa-minus" : "fa fa-plus";
+    this.openIcon = event ? 'fa fa-minus' : 'fa fa-plus';
   }
 
   onAddNewExercise(form: FormGroup) {

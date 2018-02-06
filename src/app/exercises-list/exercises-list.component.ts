@@ -6,7 +6,11 @@ import { ExercisesService } from './exercises.service';
     <div class="row exercises">
       <div class="col-xs-12 col-sm-3 exercises-nav">
         <ul class="list-group light-shadow">
-          <li class="exercise-router-item" *ngFor="let category of exercisesCategories" routerLinkActive="active"><a routerLink = "./{{category}}">{{ category }}</a></li>
+          <li class="exercise-router-item"
+            *ngFor="let category of exercisesCategories"
+            routerLinkActive="active">
+              <a routerLink = "./{{category}}">{{ category }}</a>
+          </li>
         </ul>
       </div>
       <div class="col-xs-12 col-sm-9">
