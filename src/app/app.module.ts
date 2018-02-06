@@ -35,9 +35,9 @@ import { AuthService } from './auth/auth.service';
     BlocksModule
   ],
   providers: [
-    WorkoutPlanService, 
-    ExercisesService, 
-    WorkoutDataService, 
+    WorkoutPlanService,
+    ExercisesService,
+    WorkoutDataService,
     AuthService
   ],
   bootstrap: [AppComponent]

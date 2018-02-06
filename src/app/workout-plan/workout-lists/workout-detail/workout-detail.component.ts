@@ -33,7 +33,7 @@ export class WorkoutDetailComponent implements OnInit {
           });
       });
   }
-   
+
   backToList(): void {
     this.router.navigate(['../../'], {relativeTo: this.route});
   }

@@ -55,7 +55,7 @@ export class WorkoutPlanComponent implements OnInit, OnDestroy {
   checkExercise(exercise: Exercise): void {
     this.exercisesService.getExerciseID(exercise)
       .subscribe((id: number) => this.id = id);
-      
+
     this.router.navigate(['../exercises/' + exercise.category + '/' + this.id]);
   }
 

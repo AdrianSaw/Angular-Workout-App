@@ -55,5 +55,3 @@ export class ApiService {
     return this.http.request(`${this.baseUrl}${path}`, requestOptions);
   }
 }
-
-// NOT USED YET

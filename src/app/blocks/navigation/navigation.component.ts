@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WorkoutDataService } from '../../shared/http.service';
-import { Response } from '@angular/http'; 
+import { Response } from '@angular/http';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -15,23 +15,24 @@ export class NavigationComponent {
   isCollapsed = true;
   url = 'https://workout-app-ee5ef.firebaseio.com/workouts.json?auth=';
 
-  constructor(private workoutDataService: WorkoutDataService, 
-              private authService: AuthService, 
-              private router: Router, 
-              private toastr: ToastrService) { }
+  constructor(
+    private workoutDataService: WorkoutDataService,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService) { }
 
   saveData(): void {
-		this.workoutDataService.httpRequest(this.url, 'put')
-			.subscribe((response: Response) => {
+    this.workoutDataService.httpRequest(this.url, 'put')
+      .subscribe((response: Response) => {
           this.toastr.success('Data saved');
-			},
-			(error) => {
+      },
+      (error) => {
           this.toastr.warning('Something went wrong');
-			});
+      });
   }
 
   fetchData(): void {
-  	this.workoutDataService.httpRequest(this.url, 'get');
+    this.workoutDataService.httpRequest(this.url, 'get');
   }
 
   onLogout(): void {
