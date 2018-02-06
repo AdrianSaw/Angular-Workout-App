@@ -8,5 +8,5 @@ It let user create his own library of exercises and workouts.
 <b>TODO:</b><br>
 -Edit mode for workout detail<br>
 -Quite a lot of style upgrades<br>
--Linter + code refactor<br>
+-Code refactor<br>
 -General fixes
