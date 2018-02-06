@@ -6,20 +6,20 @@ import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
-	declarations: [
-		NavigationComponent,
-		HomeComponent
-	],
-	imports: [
-		CommonModule,
-		SharedModule,
-		AppRoutingModule
-	],
-	exports: [
-		AppRoutingModule,
-		NavigationComponent,
-		HomeComponent
-	]
+  declarations: [
+    NavigationComponent,
+    HomeComponent
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    AppRoutingModule
+  ],
+  exports: [
+    AppRoutingModule,
+    NavigationComponent,
+    HomeComponent
+  ]
 })
 
 export class BlocksModule { }

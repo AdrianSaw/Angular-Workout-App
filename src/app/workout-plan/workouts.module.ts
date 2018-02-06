@@ -7,16 +7,16 @@ import { WorkoutListsComponent } from './workout-lists/workout-lists.component';
 import { WorkoutDetailComponent } from './workout-lists/workout-detail/workout-detail.component';
 
 @NgModule({
-	declarations: [
-	    WorkoutPlanComponent,
-	    WorkoutListsComponent,
-	    WorkoutDetailComponent
-	],
-	imports: [
-		CommonModule,
-		FormsModule,
-		WorkoutsRoutingModule
-	]
+  declarations: [
+      WorkoutPlanComponent,
+      WorkoutListsComponent,
+      WorkoutDetailComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    WorkoutsRoutingModule
+  ]
 })
 
 export class WorkoutsModule { }

@@ -11,19 +11,19 @@ import { ExercisesDetailComponent } from './exercises-item/exercises-detail/exer
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-	declarations: [
+  declarations: [
     ExercisesListComponent,
     ExercisesStartComponent,
     ExercisesCategoryComponent,
     ExercisesItemComponent,
     ExercisesDetailComponent
-	],
-	imports: [
-		CommonModule,
-		FormsModule,
-		ExercisesRoutingModule,
-		SharedModule
-	]
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ExercisesRoutingModule,
+    SharedModule
+  ]
 })
 
-export class ExercisesModule {}
+export class ExercisesModule { }

@@ -5,18 +5,18 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
-	declarations: [
+  declarations: [
 
-	],
-	imports: [
-		CommonModule,
-		AccordionModule.forRoot(),
-    	CollapseModule.forRoot()
-	],
-	exports: [
-		AccordionModule,
-		CollapseModule
-	]
+  ],
+  imports: [
+    CommonModule,
+    AccordionModule.forRoot(),
+      CollapseModule.forRoot()
+  ],
+  exports: [
+    AccordionModule,
+    CollapseModule
+  ]
 })
 
 export class SharedModule { }
