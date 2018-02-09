@@ -1,12 +1,15 @@
 # Angular-Workout
-<br>
-What does it do?
-<br>
-It let user create his own library of exercises and workouts.
-<br>
+- Add exercises to exercises list
+- Add exercises to workout list
+- Manage workout list
+- Signin/Signup
+- Store/Load data
 <br>
 <b>TODO:</b><br>
 -Edit mode for workout detail<br>
--Quite a lot of style upgrades<br>
+-Style changes<br>
 -Code refactor<br>
 -General fixes
+
+# Technology:
+Angular4, Typescript, Bootstrap3, Firebase
