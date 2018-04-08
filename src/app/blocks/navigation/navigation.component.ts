@@ -13,11 +13,11 @@ import { ToastrService } from 'ngx-toastr';
 export class NavigationComponent {
 
   isCollapsed = true;
-  url = 'https://workout-app-ee5ef.firebaseio.com/workouts.json?auth=';
+  url = 'https://workout-app-ee5ef.firebaseio.com/workouts.json';
 
   constructor(
     private workoutDataService: WorkoutDataService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private toastr: ToastrService) { }
 

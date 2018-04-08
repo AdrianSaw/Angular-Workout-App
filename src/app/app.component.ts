@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import {WorkoutDataService} from './shared/http.service';
+
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,11 @@ import * as firebase from 'firebase';
 })
 
 export class AppComponent implements OnInit {
+  test = [];
+  constructor(
+    private httpService: WorkoutDataService) {
+
+  }
 
   ngOnInit() {
     firebase.initializeApp({
@@ -23,5 +30,4 @@ export class AppComponent implements OnInit {
         authDomain: 'workout-app-ee5ef.firebaseapp.com'
     });
   }
-
 }
